@@ -4,46 +4,32 @@ import Platform from '../objects/Platform';
 
 const SCALE = 1;
 const GRAVITY = 1200;
-const LEVEL_01 = [
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, Platform, Platform, Platform, Platform, null, null, Platform, Platform, Platform, Platform, Platform, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Ground, Ground, null],
-    [Ground, Ground, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Ground, Ground, Ground, Ground, Ground, Ground, Ground],
-    [Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground]
-];
 
 export default class GameState extends Phaser.State {
 
   preload () {
       Phaser.game = this.game;
-      this.game.load.spritesheet('player_01', 'assets/player_01.png', 9, 12);
       this.game.load.spritesheet('level_tiles', 'assets/level_tiles.png', 8, 8);
+      this.game.load.tilemap('level_map', 'assets/level_tiles.csv', null, Phaser.Tilemap.CSV);
+      this.game.load.spritesheet('player_01', 'assets/player_01.png', 9, 12);
   }
 
   create () {
+
+      let map = this.game.add.tilemap('level_map', 8, 8);
+      let layer = map.createLayer(0);
+
+      map.addTilesetImage('Gumdrop-Level-01', 'level_tiles');
+      map.setCollisionBetween(1, 4);
+
+    //   layer.debug = true;
+      layer.resizeWorld();
+
+      this.game.stage.backgroundColor = 'rgb(12, 17, 67)';
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
       this.game.physics.arcade.gravity.y = GRAVITY;
-      this.level = this.game.add.group(this.game.world, 'level');
-      this.level.scale.setTo(6, 6);
-
-      LEVEL_01.forEach((row, ri) => {
-        row.forEach((obj, ci) => {
-            if (typeof obj === 'function') {
-                new obj(this.game, ci * 8, ri * 8, this.level);
-            }
-        });
-      });
-
-      this.player = new Player(this.game, 8, 4, this.game.world);
-      this.player.scale.setTo(6, 6);
-
-      // Bounds are tile (width|height) * scale * num tiles
-      // TODO: Make this better?
-      this.game.world.setBounds(0, 0, 8 * 6 * 24, 8 * 6 * 9);
+      this.level = layer;
+      this.player = new Player(this.game, 8, 48, this.game.world);
       this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_PLATFORMER);
   }
 
@@ -66,7 +52,7 @@ export default class GameState extends Phaser.State {
   }
 
   render() {
-
+      pixel.context.drawImage(game.canvas, 0, 0, game.width, game.height, 0, 0, pixel.width, pixel.height);
     //   this.game.world.forEach((child) => {
     //       this.game.debug.body(child, 'rgba(255, 0, 0, .6)');
     //   });

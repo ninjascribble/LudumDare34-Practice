@@ -9,14 +9,14 @@ const SCALE = 6;
 
 class Game extends Phaser.Game {
   constructor () {
-    let w = TILE_W * VIEW_W * SCALE;
-    let h = TILE_H * VIEW_H * SCALE;
+    let w = TILE_W * VIEW_W;
+    let h = TILE_H * VIEW_H;
 
-    super(w, h, Phaser.AUTO, 'content', null, false, false);
+    super(w, h, Phaser.CANVAS, '', false, false);
     this.state.add('GameState', GameState, false);
     this.state.add('Menu', Menu, false);
-    this.state.start('GameState');
+    this.state.start('Menu');
   }
 }
 
-new Game();
+global.game = new Game();

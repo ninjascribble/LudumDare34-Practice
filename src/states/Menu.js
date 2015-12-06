@@ -4,21 +4,31 @@ import style from '../services/style';
 export default class Menu extends Phaser.State {
 
   create () {
+      global.pixel = {
+          scale: 6,
+          canvas: null,
+          context: null,
+          width: 0,
+          height: 0
+      };
 
-      let w = 120
-      let h = 50
-      let x = this.game.width / 2 - w / 2
-      let y = this.game.height / 2 - h / 2
-      let textButton = new TextButton(this.game, {
-          text: 'Sandbox',
-          callback: () => { this.game.state.start('GameState'); },
-          x: x,
-          y: y,
-          width: w,
-          height: h,
-          textStyle: style.text()
-      });
+      console.log(game.height, pixel.scale, game.height * pixel.scale)
+      console.log(game.width, pixel.scale, game.width * pixel.scale)
 
-      this.game.add.existing(textButton);
+      // Scaling the canvas up
+      // See: http://www.photonstorm.com/phaser/pixel-perfect-scaling-a-phaser-game
+      game.canvas.style['display'] = 'none';
+      pixel.canvas = Phaser.Canvas.create('', game.width * pixel.scale, game.height * pixel.scale);
+      pixel.context = pixel.canvas.getContext('2d');
+      Phaser.Canvas.addToDOM(pixel.canvas);
+      Phaser.Canvas.setSmoothingEnabled(pixel.context, false);
+      pixel.width = pixel.canvas.width;
+      pixel.height = pixel.canvas.height;
+
+      this.game.state.start('GameState');
+  }
+
+  render () {
+      pixel.context.drawImage(game.canvas, 0, 0, game.width, game.height, 0, 0, pixel.width, pixel.height);
   }
 }
