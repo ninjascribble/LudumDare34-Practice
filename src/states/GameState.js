@@ -40,6 +40,10 @@ export default class GameState extends Phaser.State {
 
       this.player = new Player(this.game, 8, 4, this.game.world);
       this.player.scale.setTo(6, 6);
+
+      // Bounds are tile (width|height) * scale * num tiles
+      // TODO: Make this better?
+      this.game.world.setBounds(0, 0, 8 * 6 * 24, 8 * 6 * 9);
       this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_PLATFORMER);
   }
 
