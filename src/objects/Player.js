@@ -5,9 +5,9 @@ export default class Player extends Phaser.Sprite {
     constructor (game, x, y, group) {
         super(game, x, y, ASSET_KEY, 1);
         game.physics.arcade.enableBody(this);
-        this.body.setSize(6, 12, 0, 0);
+        this.body.setSize(4, 11, 0, 0);
         this.body.collideWorldBounds = true;
-        this.anchor.setTo(.4, 1);
+        this.anchor.setTo(.5, 1);
         this.animations.add('idle',  [0, 1],    5, true);
         this.animations.add('walk',  [3, 4, 5], 6, true);
         this.idle();
@@ -39,7 +39,7 @@ export default class Player extends Phaser.Sprite {
     preUpdate () {
         super.preUpdate();
         if (Math.abs(this.body.velocity.x) > 1) {
-            this.body.velocity.x *= .8
+            this.body.velocity.x = this.game.physics.arcade.computeVelocity(1, this.body, this.body.velocity.x, -24, -24, 0);
         }
         else {
             this.body.velocity.x = 0;

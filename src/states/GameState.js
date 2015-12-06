@@ -11,7 +11,7 @@ export default class GameState extends Phaser.State {
       Phaser.game = this.game;
       this.game.load.spritesheet('level_tiles', 'assets/level_tiles.png', 8, 8);
       this.game.load.tilemap('level_map', 'assets/level_tiles.csv', null, Phaser.Tilemap.CSV);
-      this.game.load.spritesheet('player_01', 'assets/player_01.png', 9, 12);
+      this.game.load.spritesheet('player_01', 'assets/player_01.png', 10, 12);
   }
 
   create () {
