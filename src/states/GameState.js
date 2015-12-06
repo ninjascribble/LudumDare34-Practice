@@ -1,27 +1,35 @@
 import Player from '../objects/Player';
 
+const SCALE = 6;
+
 export default class GameState extends Phaser.State {
 
   preload () {
-
       Phaser.game = this.game;
-
-      this.game.load.spritesheet('Yakuza1', 'assets/CyberCity/$Yakuza1.png', 64, 64);
+      this.game.load.spritesheet('player_01', 'assets/player_01.png', 9, 12);
+      this.game.load.spritesheet('level_tiles', 'assets/level_tiles.png', 8, 8);
   }
 
   create () {
+      this.world = this.game.add.group();
+      this.world.scale.setTo(SCALE, SCALE);
+      this.world.x = 0;
+      this.world.y = 0;
 
-      let x = this.game.width / 2 - 32
-      let y = this.game.height / 2 - 32
+      this.player = new Player(this.game, 0, 12);
 
-      this.player = new Player(this.game, x, y);
+      this.world.add(this.player);
   }
 
   update () {
-
-      this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT) && this.player.moveLeft();
-      this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) && this.player.moveRight();
-      this.game.input.keyboard.isDown(Phaser.Keyboard.UP) && this.player.moveUp();
-      this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN) && this.player.moveDown();
+      if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+          this.player.moveRight();
+      }
+      else if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+          this.player.moveLeft();
+      }
+      else {
+          this.player.idle();
+      }
   }
 }

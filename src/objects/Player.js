@@ -1,31 +1,26 @@
-const ASSET_KEY = 'Yakuza1';
+const ASSET_KEY = 'player_01';
 
 export default class Player extends Phaser.Sprite {
 
     constructor (game, x, y) {
-
         super(game, x, y, ASSET_KEY, 1);
-
-        this.game.add.existing(this);
-        this.animations.add('walk_down',  [1, 2, 1, 0],    8, true);
-        this.animations.add('walk_left',  [4, 5, 4, 3],    6, true);
-        this.animations.add('walk_right', [7, 8, 7, 6],    6, true);
-        this.animations.add('walk_up',    [10, 9, 10, 11], 8, true);
+        this.anchor.setTo(.4, 1);
+        this.animations.add('idle',  [0, 1],    5, true);
+        this.animations.add('walk',  [3, 4, 5], 6, true);
+        this.idle();
     }
 
-    moveDown () {
-        this.animations.play('walk_down');
+    idle () {
+        this.animations.play('idle');
     }
 
     moveLeft () {
-        this.animations.play('walk_left');
+        this.scale.x = -1;
+        this.animations.play('walk');
     }
 
     moveRight () {
-        this.animations.play('walk_right');
-    }
-
-    moveUp () {
-        this.animations.play('walk_up');
+        this.scale.x = 1;
+        this.animations.play('walk');
     }
 }
