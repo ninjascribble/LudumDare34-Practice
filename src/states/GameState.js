@@ -36,7 +36,7 @@ export default class GameState extends Phaser.State {
   update () {
       this.game.physics.arcade.collide(this.player, this.level);
 
-      if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+      if (this.game.input.keyboard.downDuration(Phaser.Keyboard.UP)) {
           this.player.jump();
       }
 
@@ -52,13 +52,9 @@ export default class GameState extends Phaser.State {
   }
 
   render() {
-      pixel.context.drawImage(game.canvas, 0, 0, game.width, game.height, 0, 0, pixel.width, pixel.height);
     //   this.game.world.forEach((child) => {
     //       this.game.debug.body(child, 'rgba(255, 0, 0, .6)');
     //   });
-      //
-    //   this.level.forEach((child) => {
-    //       this.game.debug.body(child, 'rgba(0, 127, 255, .6)');
-    //   });
+      pixel.context.drawImage(game.canvas, 0, 0, game.width, game.height, 0, 0, pixel.width, pixel.height);
   }
 }

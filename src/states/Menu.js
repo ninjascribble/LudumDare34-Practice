@@ -12,8 +12,7 @@ export default class Menu extends Phaser.State {
           height: 0
       };
 
-      console.log(game.height, pixel.scale, game.height * pixel.scale)
-      console.log(game.width, pixel.scale, game.width * pixel.scale)
+      game.stage.smooth = false;
 
       // Scaling the canvas up
       // See: http://www.photonstorm.com/phaser/pixel-perfect-scaling-a-phaser-game
@@ -21,6 +20,7 @@ export default class Menu extends Phaser.State {
       pixel.canvas = Phaser.Canvas.create('', game.width * pixel.scale, game.height * pixel.scale);
       pixel.context = pixel.canvas.getContext('2d');
       Phaser.Canvas.addToDOM(pixel.canvas);
+      Phaser.Canvas.setImageRenderingCrisp(pixel.canvas);
       Phaser.Canvas.setSmoothingEnabled(pixel.context, false);
       pixel.width = pixel.canvas.width;
       pixel.height = pixel.canvas.height;

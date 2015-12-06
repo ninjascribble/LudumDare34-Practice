@@ -12,7 +12,7 @@ class Game extends Phaser.Game {
     let w = TILE_W * VIEW_W;
     let h = TILE_H * VIEW_H;
 
-    super(w, h, Phaser.CANVAS, '', false, false);
+    super(w, h, Phaser.AUTO, '', false, false);
     this.state.add('GameState', GameState, false);
     this.state.add('Menu', Menu, false);
     this.state.start('Menu');

@@ -20,15 +20,13 @@ export default class Player extends Phaser.Sprite {
 
     moveLeft () {
         this.scale.x = Math.abs(this.scale.x) * -1;
-        this.body.setSize(6, 12, 3, 0);
-        this.body.velocity.x = -80;
+        this.body.velocity.x = -60;
         this.animations.play('walk');
     }
 
     moveRight () {
         this.scale.x = Math.abs(this.scale.x);
-        this.body.setSize(6, 12, 0, 0);
-        this.body.velocity.x = 80;
+        this.body.velocity.x = 60;
         this.animations.play('walk');
     }
 
