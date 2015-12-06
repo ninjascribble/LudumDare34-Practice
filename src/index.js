@@ -7,7 +7,8 @@ class Game extends Phaser.Game {
     super(576, 384, Phaser.AUTO, 'content', null, false, false);
     this.state.add('GameState', GameState, false);
     this.state.add('Menu', Menu, false);
-    this.state.start('Menu');
+    // this.state.start('Menu');
+    this.state.start('GameState');
   }
 }
 

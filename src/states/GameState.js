@@ -1,6 +1,18 @@
 import Player from '../objects/Player';
+import Ground from '../objects/Ground';
+import Platform from '../objects/Platform';
 
 const SCALE = 6;
+const LEVEL_01 = [
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, Platform, Platform, Platform, Platform, null, null, Platform, Platform, Platform, Platform, Platform, null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    [Ground, Ground, null, null, null, null, null, null, null, null, null, null, Ground, Ground, null, null, null, Ground, Ground, Ground, Ground, Ground, Ground, Ground],
+    [Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground, Ground]
+];
 
 export default class GameState extends Phaser.State {
 
@@ -11,14 +23,15 @@ export default class GameState extends Phaser.State {
   }
 
   create () {
-      this.world = this.game.add.group();
-      this.world.scale.setTo(SCALE, SCALE);
-      this.world.x = 0;
-      this.world.y = 0;
-
-      this.player = new Player(this.game, 0, 12);
-
-      this.world.add(this.player);
+      this.game.world.scale.setTo(SCALE, SCALE);
+      LEVEL_01.forEach((row, ri) => {
+        row.forEach((obj, ci) => {
+            if (typeof obj === 'function') {
+                new obj(this.game, ci * 8, ri * 8, this.game.world);
+            }
+        });
+      });
+      this.player = new Player(this.game, 8, 48, this.game.world);
   }
 
   update () {
