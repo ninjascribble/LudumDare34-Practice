@@ -11,6 +11,7 @@ export default class GameState extends Phaser.State {
       Phaser.game = this.game;
       this.game.load.spritesheet('level_tiles', 'assets/level_tiles.png', 8, 8);
       this.game.load.tilemap('level_map', 'assets/level_tiles.csv', null, Phaser.Tilemap.CSV);
+      this.game.load.tilemap('level_map_fore', 'assets/level_tiles_fore.csv', null, Phaser.Tilemap.CSV);
       this.game.load.spritesheet('player_01', 'assets/player_01.png', 10, 12);
   }
 
@@ -30,6 +31,12 @@ export default class GameState extends Phaser.State {
       this.game.physics.arcade.gravity.y = GRAVITY;
       this.level = layer;
       this.player = new Player(this.game, 8, 64, this.game.world);
+
+      let map_fore = this.game.add.tilemap('level_map_fore', 8, 8);
+      let layer_fore = map_fore.createLayer(0);
+
+      map_fore.addTilesetImage('Gumdrop-Level-02', 'level_tiles');
+
       this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_PLATFORMER);
   }
 
