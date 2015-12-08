@@ -29,7 +29,7 @@ export default class GameState extends Phaser.State {
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
       this.game.physics.arcade.gravity.y = GRAVITY;
       this.level = layer;
-      this.player = new Player(this.game, 8, 48, this.game.world);
+      this.player = new Player(this.game, 8, 64, this.game.world);
       this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_PLATFORMER);
   }
 
