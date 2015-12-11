@@ -10,3 +10,4 @@ $ git clone git@github.com:ninjascribble/LudumDare34-Practice.git .
 $ npm install
 $ npm start
 ```
+Assets in asset folder come from [http://luciddesign.tk/](http://luciddesign.tk/).
