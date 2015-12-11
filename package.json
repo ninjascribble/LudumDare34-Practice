@@ -1,16 +1,15 @@
 {
-  "name": "phaser-es6-boilerplate",
-  "version": "1.0.2",
-  "description": "Tiny flexible template for writing Phaser games in ES6/ES2015 with Babel.",
-  "main": "src/index.js",
+  "name": "LudumDare34-Practice",
+  "version": "1.0.0",
+  "description": "A bit of practice with Phaser, ES2015 and Webpack",
   "scripts": {
-    "start": "webpack"
+    "start": "webpack-dev-server --content-base build/ --inline"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/belohlavek/phaser-es6-boilerplate"
+    "url": "https://github.com/ninjascribble/LudumDare34-Practice"
   },
-  "author": "Daniel Belohlavek",
+  "author": "@ninjascript",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.3.17",
