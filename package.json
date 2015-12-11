@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A bit of practice with Phaser, ES2015 and Webpack",
   "scripts": {
-    "start": "webpack-dev-server --content-base build/ --inline"
+    "start": "npm run dev",
+    "dev": "webpack-dev-server --content-base build/ --inline",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
