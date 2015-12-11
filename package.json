@@ -21,7 +21,6 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
-    "phaser": "^2.4.4",
-    "phaser-plugin-text-tools": "github:bmceldowney/phaser-plugin-text-tools"
+    "phaser": "^2.4.4"
   }
 }
