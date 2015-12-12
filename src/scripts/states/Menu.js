@@ -16,7 +16,7 @@ export default class Menu extends Phaser.State {
     game.canvas.style.display = 'none';
     pixel.canvas = Phaser.Canvas.create('', game.width * pixel.scale, game.height * pixel.scale);
     pixel.context = pixel.canvas.getContext('2d');
-    Phaser.Canvas.addToDOM(pixel.canvas);
+    Phaser.Canvas.addToDOM(pixel.canvas, 'content');
     Phaser.Canvas.setImageRenderingCrisp(pixel.canvas);
     Phaser.Canvas.setSmoothingEnabled(pixel.context, false);
     pixel.width = pixel.canvas.width;

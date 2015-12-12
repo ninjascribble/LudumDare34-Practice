@@ -4,24 +4,32 @@ html {
   margin: 0px;
   padding: 0px;
 }
-
 body {
-  background-color: #111;
-  height: inherit;
-  width: inherit;
-  margin: 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgba(10, 10, 10, 1);
+  color: rgba(255, 255, 255, .4);
+  font-family: Monaco, Consolas;
+  font-size: 12px;
+  width: 800px;
+  margin: 0px auto;
+  -webkit-font-smoothing: antialiased;
 }
-
+a {
+  color: rgba(0, 180, 180, .6);
+}
+li {
+  list-style: none;
+}
+li::before {
+  content: '$ ';
+}
+#content {
+  height: 480px;
+  width: 800px;
+}
 @font-face {
   font-family: 'NewWiz';
   src: url('/fonts/NewWiz.eot');
-  src: local('☺'),
-       url('/fonts/NewWiz.woff') format('woff'),
-       url('/fonts/NewWiz.ttf') format('truetype'),
-       url('/fonts/NewWiz.svg') format('svg');
+  src: local('☺'), url('/fonts/NewWiz.woff') format('woff'), url('/fonts/NewWiz.ttf') format('truetype'), url('/fonts/NewWiz.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
