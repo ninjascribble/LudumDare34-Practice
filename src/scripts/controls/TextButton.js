@@ -1,6 +1,6 @@
 export default class TextButton extends Phaser.Graphics {
   constructor (game, options) {
-    const {x, y, width, height, text, textStyle, callback, context} = options;
+    const { x, y, width, height, text, textStyle, callback, context } = options;
 
     super(game, x, y);
     this.game.add.existing(this);

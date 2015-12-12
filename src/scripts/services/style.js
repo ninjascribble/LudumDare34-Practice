@@ -1,5 +1,5 @@
 export default {
-  text: function () {
+  text: () => {
     return Object.create({
       font: '14px NewWiz',
       fill: '#00dd00',

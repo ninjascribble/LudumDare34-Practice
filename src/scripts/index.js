@@ -4,8 +4,7 @@ import Menu from './states/Menu';
 const TILE_W = 8;
 const TILE_H = 8;
 const VIEW_W = 16;
-const VIEW_H = 9;
-const SCALE = 6;
+const VIEW_H = 10;
 
 class Game extends Phaser.Game {
   constructor () {

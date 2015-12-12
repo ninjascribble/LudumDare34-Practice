@@ -1,5 +1,5 @@
 {
-  "extends": "standard",
+  "extends": "idiomatic",
   "ecmaFeatures": {
     "modules": true
   },
@@ -16,9 +16,15 @@
     "semi": [2, "always"],
     "space-before-function-paren": [1, "always"],
     "indent": [2, 2, { "SwitchCase": 1 }],
-    "no-use-before-define": [2, "nofunc"]
+    "no-use-before-define": [2, "nofunc"],
+    "space-in-parens": [2, "never"],
+    "computed-property-spacing": [2, "never"],
+    "array-bracket-spacing": [2, "never"],
+    "one-var": [2, "never"]
   },
   "globals": {
-    "Phaser": true
+    "Phaser": true,
+    "game": true,
+    "pixel": true
   }
 }
