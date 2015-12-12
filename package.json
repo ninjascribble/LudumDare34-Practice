@@ -6,7 +6,7 @@
     "start": "npm run dev",
     "dev": "webpack-dev-server --content-base build/ --inline",
     "build": "webpack",
-    "test": "eslint ./src/scripts/*"
+    "lint": "eslint ./src/scripts/*"
   },
   "repository": {
     "type": "git",
